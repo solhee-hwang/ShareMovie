@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface LikemovieRepository extends JpaRepository<Likemovie, Integer> {
     Optional<Likemovie> findByUserAndMovieId(User user,Integer movieId);
+
+    Boolean existsByUserAndMovieId(User user, Integer movieId);
 }

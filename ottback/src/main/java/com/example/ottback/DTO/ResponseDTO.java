@@ -2,6 +2,8 @@ package com.example.ottback.DTO;
 
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -10,4 +12,5 @@ import lombok.*;
 @ToString
 public class ResponseDTO<T> {
     private String error;
+    private List<T> data;
 }
