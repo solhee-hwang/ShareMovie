@@ -19,8 +19,8 @@ public class Likelist {
     @JoinColumn(name = "user_index")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = MyList.class)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Mylist.class)
     @JoinColumn(name="list_index")
-    private MyList myList;
+    private Mylist myList;
 
 }
