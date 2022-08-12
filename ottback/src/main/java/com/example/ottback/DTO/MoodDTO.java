@@ -1,25 +1,15 @@
-package com.example.ottback.model;
+package com.example.ottback.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
-@Entity
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Mood {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mood_index")
+public class MoodDTO {
     private Long moodIndex;
-
-    @Column(name = "mood")
     private String mood;
-
-
 }
