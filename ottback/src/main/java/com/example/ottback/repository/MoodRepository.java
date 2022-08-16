@@ -9,4 +9,6 @@ import java.util.Optional;
 
 public interface MoodRepository extends JpaRepository<Mood, Long> {
     Optional<Mood> findByMood(String mood);
+
+    Optional<Mood> findByMoodIndex(Long index);
 }

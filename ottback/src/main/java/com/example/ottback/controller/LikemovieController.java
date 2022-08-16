@@ -38,7 +38,7 @@ public class LikemovieController {
             }
             List<Likemovie> likemovies = likemovieService.findAll();
             List<LikemovieDTO> dtos = likemovies.stream().map(LikemovieDTO::new).collect(Collectors.toList());
-            ResponseDTO<LikemovieDTO> responseDTO = ResponseDTO.<LikemovieDTO>builder().data(dtos).error("not error findall data").build();
+            ResponseDTO<LikemovieDTO> responseDTO = ResponseDTO.<LikemovieDTO>builder().data(dtos).error("").build();
             return ResponseEntity.ok(responseDTO);
         } catch (Exception e){
             ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();

@@ -12,5 +12,6 @@ import java.util.List;
 @ToString
 public class ResponseDTO<T> {
     private String error;
-    private List<T> data;
+    private List<?> data;
+
 }
