@@ -46,11 +46,11 @@ class MyListRepositoryTest {
         userRepository.save(user2);
         userRepository.save(user3);
 
-        Mylist mylist1 = Mylist.builder().authority(false).listName("name1").user(user1).movieId(100).build();
-        Mylist mylist2 = Mylist.builder().authority(true).listName("name2").user(user2).movieId(100).build();
-        Mylist mylist3 = Mylist.builder().authority(true).listName("name3").user(user1).movieId(100).build();
-        Mylist mylist4 = Mylist.builder().authority(true).listName("name3").user(user3).movieId(100).build();
-        Mylist mylist5 = Mylist.builder().authority(false).listName("name3").user(user3).movieId(100).build();
+        Mylist mylist1 = Mylist.builder().authority(false).listName("name1").user(user1).build();
+        Mylist mylist2 = Mylist.builder().authority(true).listName("name2").user(user2).build();
+        Mylist mylist3 = Mylist.builder().authority(true).listName("name3").user(user1).build();
+        Mylist mylist4 = Mylist.builder().authority(true).listName("name3").user(user3).build();
+        Mylist mylist5 = Mylist.builder().authority(false).listName("name3").user(user3).build();
         myListRepository.save(mylist1);
         myListRepository.save(mylist2);
         myListRepository.save(mylist3);

@@ -25,5 +25,4 @@ public class ListMood {
     @JoinColumn(name = "mylist_index")
     private Mylist myList;
 
-
 }

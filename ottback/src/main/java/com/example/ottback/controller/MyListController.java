@@ -30,7 +30,6 @@ public class MyListController {
                     .listName(myListDTO.getListName())
                     .authority(myListDTO.isAuthority())
                     .likeCount(myListDTO.getLikeCount())
-                    .movieId(myListDTO.getMovieId())
                     .build();
             Mylist registerMyList = myListService.save(myList);
             MyListDTO responseDTO = MyListDTO.builder().listIndex(registerMyList.getListIndex())
@@ -38,7 +37,7 @@ public class MyListController {
                     .listName(registerMyList.getListName())
                     .authority(registerMyList.isAuthority())
                     .likeCount(registerMyList.getLikeCount())
-                    .movieId(registerMyList.getMovieId()).build();
+                    .build();
             return ResponseEntity.ok(responseDTO);
         } catch (Exception e) {
             ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();
@@ -60,6 +59,23 @@ public class MyListController {
         }
 
     }
+    @PostMapping("findmine")
+    public ResponseEntity<?> findMine(@RequestBody MyListDTO myListDTO){
+        try {
+            User user = userService.findbyId(myListDTO.getUserIndex());
+            List<Mylist> mylists = myListService.findMine(user);
+            List<MyListDTO> dtos = mylists.stream().map(MyListDTO::new).collect(Collectors.toList());
+            ResponseDTO<Object> responseDTO = ResponseDTO.builder().error("").data(dtos).build();
+            return ResponseEntity.ok(responseDTO);
+        } catch (Exception e) {
+            ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();
+            return  ResponseEntity.badRequest().body(responseDTO);
+        }
 
-
+    }
+//    @PutMapping
+//    public ResponseEntity<?> update(@RequestBody MyListDTO myListDTO){
+//        Mylist mylist = myListService.findByIndex(myListDTO.getListIndex());
+//        Mylist updateList = myListService.updateList(mylist);
+//    }
 }

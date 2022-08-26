@@ -3,6 +3,7 @@ package com.example.ottback.service;
 import com.example.ottback.model.Mylist;
 import com.example.ottback.model.User;
 import com.example.ottback.repository.MyListRepository;
+import com.example.ottback.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,19 @@ public class MyListService {
         }
         return myListRepository.findByAuthorityAndUserNot(true, user);
     }
+
+    public List<Mylist> findMine(User user) {
+        if(myListRepository.findByUser(user) == null){
+            log.error("아직입력된 데이터가 없습니다");
+            throw new NullPointerException("not input data");
+        }
+        return myListRepository.findByUser(user);
+    }
+    public Mylist findByIndex(Long listIndex){
+        return myListRepository.findByListIndex(listIndex).get();
+    }
+
+//    public Mylist updateList(Mylist mylist) {
+//
+//    }
 }

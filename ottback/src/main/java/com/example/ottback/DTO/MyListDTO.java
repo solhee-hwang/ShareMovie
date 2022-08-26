@@ -18,7 +18,6 @@ public class MyListDTO {
     private Long listIndex;
     private String listName;
     private String mood;
-    private int movieId;
     private boolean authority;
     private int likeCount;
     private Set<Long> listMoods;
@@ -27,7 +26,6 @@ public class MyListDTO {
         this.userIndex = mylist.getUser().getUserIndex();
         this.listIndex = mylist.getListIndex();
         this.listName = mylist.getListName();
-        this.movieId = mylist.getMovieId();
         this.authority = mylist.isAuthority();
         this.likeCount = mylist.getLikeCount();
     }

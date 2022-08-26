@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Mylist {
+public class Mylist extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="list_index")
@@ -19,9 +19,6 @@ public class Mylist {
 
     @Column(name="list_name")
     private String listName;
-
-    @Column(name="movie_id")
-    private int movieId;
 
     @Column(name="authority")
     private boolean authority;
@@ -35,5 +32,8 @@ public class Mylist {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "myList")
     private Set<ListMood> moods = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "myList")
+    private Set<Movie> movies = new HashSet<>();
 
 }
