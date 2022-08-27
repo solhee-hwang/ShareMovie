@@ -1,5 +1,6 @@
 package com.example.ottback.model;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Movie {
+public class Movie extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="movie_index")
