@@ -29,7 +29,7 @@ public class MyListController {
             Mylist myList = Mylist.builder().user(user)
                     .listName(myListDTO.getListName())
                     .authority(myListDTO.isAuthority())
-                    .likeCount(myListDTO.getLikeCount())
+                    .likeCount(0)
                     .build();
             Mylist registerMyList = myListService.save(myList);
             MyListDTO responseDTO = MyListDTO.builder().listIndex(registerMyList.getListIndex())
@@ -73,9 +73,22 @@ public class MyListController {
         }
 
     }
-//    @PutMapping
-//    public ResponseEntity<?> update(@RequestBody MyListDTO myListDTO){
-//        Mylist mylist = myListService.findByIndex(myListDTO.getListIndex());
-//        Mylist updateList = myListService.updateList(mylist);
-//    }
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody MyListDTO myListDTO){
+        try {
+            Mylist mylist = myListService.findByIndex(myListDTO.getListIndex());
+            Mylist updateList = myListService.updateList(mylist, myListDTO.getListName(), myListDTO.isAuthority());
+            MyListDTO responseDTO = MyListDTO.builder()
+                    .listIndex(updateList.getListIndex())
+                    .listName(updateList.getListName())
+                    .authority(updateList.isAuthority())
+                    .userIndex(updateList.getUser().getUserIndex())
+                    .build();
+            return ResponseEntity.ok(responseDTO);
+        } catch (Exception e) {
+            ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();
+            return  ResponseEntity.badRequest().body(responseDTO);
+        }
+
+    }
 }

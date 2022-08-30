@@ -1,6 +1,5 @@
 package com.example.ottback.model;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

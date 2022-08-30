@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ListMood {
+public class ListMood extends BaseTimeEntity{
     @Id
     @Column(name="moodgroup_index")
     private Long moodGroupIndex;

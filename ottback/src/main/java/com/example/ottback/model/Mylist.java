@@ -36,4 +36,12 @@ public class Mylist extends BaseTimeEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "myList")
     private Set<Movie> movies = new HashSet<>();
 
+    public void update(String listName, boolean authority){
+        this.listName = listName;
+        this.authority = authority;
+    }
+    public void updateCount(int count){
+        this.likeCount += count;
+    }
+
 }
