@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.id.IntegralDataTypeHolder;
 
 import javax.persistence.*;
 @Entity
@@ -13,8 +14,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Likemovie extends BaseTimeEntity  {
     @Id
-    @Column(name ="movie_id")
-    private Integer movieId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="likemovie_index")
+    private Long likemovieIndex;
+
+    @Column(name ="movieId")
+    private int movieId;
 
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)

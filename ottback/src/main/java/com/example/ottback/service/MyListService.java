@@ -32,11 +32,11 @@ public class MyListService {
     }
 
     public List<Mylist> findByOpen(User user) {
-        if(myListRepository.findByAuthorityAndUserNot(true, user) == null){
+        if(myListRepository.findByAuthorityAndUserNot(false, user) == null){
             log.error("아직 입력된 데이터가 없습니다.");
             throw new NullPointerException("not input data");
         }
-        return myListRepository.findByAuthorityAndUserNot(true, user);
+        return myListRepository.findByAuthorityAndUserNot(false, user);
     }
 
     public List<Mylist> findMine(User user) {

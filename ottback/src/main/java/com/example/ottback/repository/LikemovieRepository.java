@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface LikemovieRepository extends JpaRepository<Likemovie, Integer> {
-    Optional<Likemovie> findByUserAndMovieId(User user,Integer movieId);
+public interface LikemovieRepository extends JpaRepository<Likemovie, Long> {
+    Optional<Likemovie> findByUserAndLikemovieIndex(User user, Long likemovieIndex);
 
-    Boolean existsByUserAndMovieId(User user, Integer movieId);
+    Boolean existsByUserAndLikemovieIndex(User user, Long likemovieIndex);
+
+    Likemovie findByUserAndMovieId(User user, int movieId);
 }

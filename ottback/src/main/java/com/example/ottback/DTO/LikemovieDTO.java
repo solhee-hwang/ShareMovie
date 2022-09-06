@@ -11,11 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LikemovieDTO {
-    private int movieId;
+    private Long likemovieIndex;
     private Long userIndex;
+    private int movieId;
 
     public LikemovieDTO(final Likemovie likemovie) {
-        this.movieId = likemovie.getMovieId();
+        this.likemovieIndex = likemovie.getLikemovieIndex();
         this.userIndex = likemovie.getUser().getUserIndex();
+        this.movieId = likemovie.getMovieId();
     }
 }

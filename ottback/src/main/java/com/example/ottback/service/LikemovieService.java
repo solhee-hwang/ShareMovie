@@ -14,12 +14,13 @@ public class LikemovieService {
     @Autowired
     private LikemovieRepository likemovieRepository;
     public Likemovie like(Likemovie likemovie) {
-        if(likemovieRepository.existsByUserAndMovieId(likemovie.getUser(), likemovie.getMovieId())){
+        if(likemovieRepository.findByUserAndMovieId(likemovie.getUser(), likemovie.getMovieId())!= null){
+            likemovie = likemovieRepository.findByUserAndMovieId(likemovie.getUser(), likemovie.getMovieId());
+            log.info("좋아요 취소");
             likemovieRepository.delete(likemovie);
-            return null;
+            return likemovie;
         }
-        likemovieRepository.save(likemovie);
-        return likemovie;
+        return likemovieRepository.save(likemovie);
     }
     public List<Likemovie> findAll(){
         return likemovieRepository.findAll();

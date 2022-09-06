@@ -16,7 +16,7 @@ public class UserService {
         validateDuplicateUser(user);
         return userRepository.save(user);
     }
-    public User findbyId(Long userIndex){
+    public User findbyIndex(Long userIndex){
         if(userRepository.findByUserIndex(userIndex).isPresent()){
             return userRepository.findByUserIndex(userIndex).get();
         }

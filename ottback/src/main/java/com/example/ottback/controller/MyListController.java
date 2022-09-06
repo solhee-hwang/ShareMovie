@@ -25,7 +25,7 @@ public class MyListController {
     @PostMapping("save")
     public ResponseEntity<?> save(@RequestBody MyListDTO myListDTO){
         try {
-            User user = userService.findbyId(myListDTO.getUserIndex());
+            User user = userService.findbyIndex(myListDTO.getUserIndex());
             Mylist myList = Mylist.builder().user(user)
                     .listName(myListDTO.getListName())
                     .authority(myListDTO.isAuthority())
@@ -48,7 +48,7 @@ public class MyListController {
     @PostMapping("findopened")
     public ResponseEntity<?> findIsOpen(@RequestBody MyListDTO myListDTO){
         try {
-            User user = userService.findbyId(myListDTO.getUserIndex());
+            User user = userService.findbyIndex(myListDTO.getUserIndex());
             List<Mylist> mylists = myListService.findByOpen(user);
             List<MyListDTO> dtos = mylists.stream().map(MyListDTO::new).collect(Collectors.toList());
             ResponseDTO<Object> responseDTO = ResponseDTO.builder().error("").data(dtos).build();
@@ -62,7 +62,7 @@ public class MyListController {
     @PostMapping("findmine")
     public ResponseEntity<?> findMine(@RequestBody MyListDTO myListDTO){
         try {
-            User user = userService.findbyId(myListDTO.getUserIndex());
+            User user = userService.findbyIndex(myListDTO.getUserIndex());
             List<Mylist> mylists = myListService.findMine(user);
             List<MyListDTO> dtos = mylists.stream().map(MyListDTO::new).collect(Collectors.toList());
             ResponseDTO<Object> responseDTO = ResponseDTO.builder().error("").data(dtos).build();

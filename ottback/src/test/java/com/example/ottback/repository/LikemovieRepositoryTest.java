@@ -32,7 +32,7 @@ public class LikemovieRepositoryTest {
                 .build();
         userRepository.save(user);
         Likemovie likemovie = Likemovie.builder()
-                .user(user).movieId(1).build();
+                .user(user).likemovieIndex(1L).build();
         Likemovie result =likemovieRepository.save(likemovie);
         assertThat(result).isEqualTo(likemovieRepository.findAll().get(0));
     }
@@ -45,13 +45,13 @@ public class LikemovieRepositoryTest {
                 .build();
         userRepository.save(user);
         Likemovie likemovie1 = Likemovie.builder()
-                .movieId(1).user(user).build();
+                .likemovieIndex(1L).user(user).movieId(1).build();
         Likemovie likemovie2 = Likemovie.builder()
-                .movieId(2).user(user).build();
+                .likemovieIndex(2L).user(user).movieId(2).build();
         likemovieRepository.save(likemovie1);
         likemovieRepository.save(likemovie2);
 
-        Likemovie result =likemovieRepository.findByUserAndMovieId(user, 2).get();
+        Likemovie result =likemovieRepository.findByUserAndMovieId(user, 2);
         assertThat(likemovieRepository.findAll().get(1)).isEqualTo(result);
     }
 }

@@ -24,22 +24,19 @@ public class LikemovieController {
     @PostMapping("")
     public ResponseEntity<?> save(@RequestBody LikemovieDTO likemovieDTO){
         try {
-            User user = userService.findbyId(likemovieDTO.getUserIndex());
+            User user = userService.findbyIndex(likemovieDTO.getUserIndex());
             Likemovie likemovie = Likemovie.builder()
                     .movieId(likemovieDTO.getMovieId())
                     .user(user).build();
             Likemovie registerLikemovie = likemovieService.like(likemovie);
 
-            if(registerLikemovie != null){
-                LikemovieDTO responseDTO = LikemovieDTO.builder().movieId(registerLikemovie.getMovieId())
+            LikemovieDTO responseDTO = LikemovieDTO.builder().likemovieIndex(registerLikemovie.getLikemovieIndex())
                     .userIndex(registerLikemovie.getUser().getUserIndex())
-                    .build();
+                    .movieId(registerLikemovie.getMovieId()).build();
             return ResponseEntity.ok(responseDTO);
-            }
-            List<Likemovie> likemovies = likemovieService.findAll();
-            List<LikemovieDTO> dtos = likemovies.stream().map(LikemovieDTO::new).collect(Collectors.toList());
-            ResponseDTO<LikemovieDTO> responseDTO = ResponseDTO.<LikemovieDTO>builder().data(dtos).error("").build();
-            return ResponseEntity.ok(responseDTO);
+//            List<Likemovie> likemovies = likemovieService.findAll();
+//            List<LikemovieDTO> dtos = likemovies.stream().map(LikemovieDTO::new).collect(Collectors.toList());
+//            ResponseDTO<LikemovieDTO> responseDTO = ResponseDTO.<LikemovieDTO>builder().data(dtos).error("").build();
         } catch (Exception e){
             ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();
             return  ResponseEntity.badRequest().body(responseDTO);

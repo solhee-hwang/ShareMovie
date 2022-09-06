@@ -40,8 +40,11 @@ public class Mylist extends BaseTimeEntity {
         this.listName = listName;
         this.authority = authority;
     }
-    public void updateCount(int count){
-        this.likeCount += count;
+    public void likes(){
+        this.likeCount += 1;
+    }
+    public void unlike(){
+        this.likeCount -= 1;
     }
 
 }

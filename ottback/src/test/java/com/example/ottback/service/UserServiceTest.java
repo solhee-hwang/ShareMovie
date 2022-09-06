@@ -43,7 +43,7 @@ public class UserServiceTest {
                 .userId("user1").email("user1").password("1234").build();
         when(userRepository.findByUserIndex(index)).thenReturn(Optional.ofNullable(user));
 //        when(userRepository.findByUserIndex(2L)).thenReturn(null);
-        User resposeUser = userService.findbyId(1L);
+        User resposeUser = userService.findbyIndex(1L);
         assertThat(user).isEqualTo(resposeUser);
     }
 
