@@ -36,6 +36,9 @@ public class MoodService {
     }
 
     public Mood findByIndex(Long moodIndex) {
-        return moodRepository.findByMoodIndex(moodIndex).get();
+        Mood mood = moodRepository.findByMoodIndex(moodIndex).orElseThrow(
+                () -> new IllegalArgumentException("해당 인덱스에 포함하는 list가 없다, Index : " + moodIndex)
+        );
+        return mood;
     }
 }

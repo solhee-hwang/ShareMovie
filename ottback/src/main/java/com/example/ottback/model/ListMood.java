@@ -14,8 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class ListMood extends BaseTimeEntity{
     @Id
-    @Column(name="moodgroup_index")
-    private Long moodGroupIndex;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="listmood_index")
+    private Long listMoodIndex;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mood_index")
