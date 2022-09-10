@@ -9,4 +9,6 @@ import java.util.Optional;
 
 public interface ListMoodRepository extends JpaRepository<ListMood, Long> {
     Optional<ListMood> findByMyListAndMood(Mylist mylist, Mood mood);
+
+    Optional<ListMood> findByListMoodIndex(Long listMoodIndex);
 }
