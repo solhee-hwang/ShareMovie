@@ -1,8 +1,6 @@
 package com.example.ottback.model;
 
-import com.example.ottback.repository.FriendsRepository;
 import com.example.ottback.repository.UserRepository;
-import com.example.ottback.service.FriendsService;
 import com.example.ottback.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

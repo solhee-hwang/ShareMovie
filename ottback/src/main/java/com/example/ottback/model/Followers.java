@@ -1,6 +1,9 @@
 package com.example.ottback.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,19 +12,16 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Friends extends BaseTimeEntity{
+public class Followers extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="friends_Index")
-    private Long friendsIndex;
+    @Column(name = "followers_index")
+    private Long followersIndex;
 
-    @Column(name="frienduser_Index")
-    private Long friendUserIndex;
+    @Column(name = "followersUser_index")
+    private Long followersUserIndex;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "user_index")
     private User user;
-
-
-
 }
